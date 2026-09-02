@@ -24,5 +24,12 @@ addLayer("o", {
     hotkeys: [
         {key: "o", description: "O: Reset for Oak logs", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
+    layerShown(){return true},
+        upgrades: {
+        11: {
+    title: "oo monecraft",
+    description: "Double leaf gain.",
+    cost: new Decimal(1),
+        },
+    },
 })
