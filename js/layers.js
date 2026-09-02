@@ -28,7 +28,7 @@ addLayer("o", {
         upgrades: {
         11: {
     title: "oo monecraft",
-    description: "Double leaf gain.",
+    description: "start the game.",
     cost: new Decimal(1),
         },
     },
