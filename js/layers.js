@@ -14,7 +14,8 @@ addLayer("o", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+        let mult = new Decimal(1)
+        if (hasUpgrade('o', 14)) mult = mult.times(upgradeEffect('o', 14))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -30,6 +31,28 @@ addLayer("o", {
     title: "oo monecraft",
     description: "start the game.",
     cost: new Decimal(1),
+        },
+        12: {
+    title: "2x leaves",
+    description: "i dont want this much leaves..",
+    cost: new Decimal(3),
+    unlocked() { return hasUpgrade(this.layer, 11) },
+        },
+        13: {
+    title: "oak logs scale leaves",
+    description: "oh good more leaves..",
+    cost: new Decimal(7),
+        effect() {
+        return player[this.layer].points.add(1).pow(0.5)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+    unlocked() { return hasUpgrade(this.layer, 12) },
+        },
+        14: {
+    title: "3x leaves",
+    description: "i dont want this much leaves.. x3",
+    cost: new Decimal(15),
+    unlocked() { return hasUpgrade(this.layer, 13) },
         },
     },
 })
