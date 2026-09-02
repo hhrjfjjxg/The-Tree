@@ -54,6 +54,12 @@ addLayer("o", {
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
     unlocked() { return hasUpgrade(this.layer, 13) },
         },
+    15: {
+    title: "4x leaves",
+    description: "i dont even know what to add anymore..",
+    cost: new Decimal(1e6),
+    unlocked() { return hasUpgrade(this.layer, 14) },
+        },
     },
 })
 addLayer("s", {
@@ -96,20 +102,20 @@ addLayer("s", {
         },
     }
 })
-addLayer("p", {
-    name: "Pickaxe", // This is optional, only used in a few places, If absent it just uses the layer id.
-    symbol: "P", // This appears on the layer's node. Default is the id with the first letter capitalized
-    position: 4, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+addLayer("w", {
+    name: "Wooden Tools", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "WT", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
     }},
     branches: ["s"],
     color: "#5c3617",
-    requires: new Decimal(1e4), // Can be a function that takes requirement increases into account
-    resource: "", // Name of prestige currency
-    baseResource: "Oak Saplings", // Name of resource prestige is based on
-    baseAmount() {return player.s.points}, // Get the current amount of baseResource
+    requires: new Decimal(1e8), // Can be a function that takes requirement increases into account
+    resource: "Wooden Tools", // Name of prestige currency
+    baseResource: "Oak Logs", // Name of resource prestige is based on
+    baseAmount() {return player.o.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
@@ -121,7 +127,7 @@ addLayer("p", {
     },
     row: 1, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
-        {key: "p", description: "P: Reset for pickaxes", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+        {key: "w", description: "W: Reset for wooden tools", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true},
     upgrades: {
