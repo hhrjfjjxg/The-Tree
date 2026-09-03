@@ -35,19 +35,19 @@ addLayer("o", {
         12: {
     title: "2x leaves",
     description: "i dont want this much leaves..",
-    cost: new Decimal(3),
+    cost: new Decimal(1),
     unlocked() { return hasUpgrade(this.layer, 11) },
         },
         13: {
     title: "3x leaves",
     description: "i dont want this much leaves.. x3",
-    cost: new Decimal(7),
+    cost: new Decimal(3),
     unlocked() { return hasUpgrade(this.layer, 12) },
         },
         14: {
     title: "oak logs scale leaves",
     description: "oh good more leaves..",
-    cost: new Decimal(15),
+    cost: new Decimal(6),
         effect() {
         return player[this.layer].points.add(1).pow(0.5)
     },
@@ -58,7 +58,7 @@ addLayer("o", {
     title: "4x leaves",
     description: "i dont even know what to add anymore..",
     cost: new Decimal(1e6),
-    unlocked() { return hasUpgrade(this.layer, 14) },
+    unlocked() { return hasUpgrade(this.layer, 14) && hasUpgrade("s", 11)},
         },
     },
 })
@@ -94,7 +94,7 @@ addLayer("s", {
 11: {
     title: "saplings scale up leaves",
     description: "basic logic",
-    cost: new Decimal(1),
+    cost: new Decimal(5),
         effect() {
         return player[this.layer].points.add(1).pow(0.5)
     },
@@ -110,7 +110,7 @@ addLayer("w", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    branches: ["s"],
+    branches: ["o"],
     color: "#5c3617",
     requires: new Decimal(1e8), // Can be a function that takes requirement increases into account
     resource: "Wooden Tools", // Name of prestige currency
