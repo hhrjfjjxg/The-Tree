@@ -91,14 +91,24 @@ addLayer("s", {
     ],
     layerShown(){return true},
     upgrades: {
-11: {
+        11: {
     title: "saplings scale up leaves",
     description: "basic logic",
     cost: new Decimal(5),
         effect() {
-        return player[this.layer].points.add(1).pow(0.5)
+        return player[this.layer].points.add(1).pow(0.3)
     },
     effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+    12: {
+    title: "saplings scale up leaves again!",
+    description: "old upgrade but better",
+    cost: new Decimal(150),
+        effect() {
+        return player[this.layer].points.add(1).pow(0.4)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+    unlocked() { return hasUpgrade(this.layer, 11) },
         },
     }
 })
