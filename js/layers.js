@@ -141,6 +141,15 @@ addLayer("w", {
     ],
     layerShown(){return true},
     upgrades: {
+    11: {
+    title: "wooden axe",
+    description: "tools scale up leaves but its weaker than saplings",
+    cost: new Decimal(10),
+        effect() {
+        return player[this.layer].points.add(1).pow(0.25)
+    },
+    effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
     }
 })
 addLayer("c", {
@@ -172,5 +181,10 @@ addLayer("c", {
     ],
     layerShown(){return true},
     upgrades: {
+    11: {
+    title: "i feel pity",
+    description: "everything is awesome but this upgrade is not and uh 3.5x multiply.",
+    cost: new Decimal(1),
     }
+}
 })
