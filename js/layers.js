@@ -202,8 +202,8 @@ addLayer("i", {
 		unlocked: false,
 		points: new Decimal(0),
     }},
-    branches: ["w"],
-    color: "#868484",
+    branches: ["c", "w"],
+    color: "#e6d9d9",
     requires: new Decimal(50), // Can be a function that takes requirement increases into account
     resource: "Iron", // Name of prestige currency
     baseResource: "Wooden Tools", // Name of resource prestige is based on
